@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
 <meta property="og:title" content="Chest of Drawers">
@@ -14,6 +15,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap');
 
   :root{
+    color-scheme: light;
     --ink:#2B2A27;
     --ink-soft:#6E6B62;
     --paper:#F4F2EC;
@@ -30,38 +32,6 @@
     --radius: 3px;
     --radius-btn: 10px;
     --radius-card: 14px;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --ink:#F1EFE8;
-      --ink-soft:#B7B3A8;
-      --paper:#1E1B16;
-      --surface:#2C2822;
-      --surface-2:#1E1B16;
-      --accent:#D9B54A;
-      --accent-ink:#201A08;
-      --line:#3B3A34;
-      --line-soft:#302F2A;
-      --good:#7FB08D;
-      --sold:#E08A78;
-      --sold-bg:#3A2420;
-      --shadow: 0 1px 0 rgba(0,0,0,0.3);
-    }
-  }
-  :root[data-theme="dark"]{
-    --ink:#F1EFE8;
-    --ink-soft:#B7B3A8;
-    --paper:#1E1B16;
-    --surface:#2C2822;
-    --surface-2:#1E1B16;
-    --accent:#D9B54A;
-    --accent-ink:#201A08;
-    --line:#3B3A34;
-    --line-soft:#302F2A;
-    --good:#7FB08D;
-    --sold:#E08A78;
-    --sold-bg:#3A2420;
-    --shadow: 0 1px 0 rgba(0,0,0,0.3);
   }
 
   *{box-sizing:border-box;max-width:100%;}
