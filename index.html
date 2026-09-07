@@ -86,6 +86,7 @@
     padding:0 16px;flex:none;white-space:nowrap;
   }
   .ticker-sep{font-size:12.5px;line-height:1;color:var(--accent);flex:none;}
+  .ticker-track-wide{display:none;}
   @keyframes ticker-scroll{
     to{transform:translateX(-50%);}
   }
@@ -443,8 +444,28 @@
   }
 
   @media (min-width:1240px){
-    .wrap{padding:0 64px;}
+    .wrap{padding:0 64px;max-width:1500px;}
     .grid{grid-template-columns:repeat(4,1fr);}
+
+    /* Mobile's 2-set ticker track (translateX -50%) is intentionally left
+       untouched below this breakpoint. On very wide desktop viewports two
+       sets of items aren't wide enough to fill the bar edge-to-edge, so a
+       separate, more-repeated track takes over here instead of stretching
+       the original one. Six sets keeps the same per-set scroll speed
+       (7s per set width) while comfortably covering ultra-wide screens. */
+    .ticker-track{display:none;}
+    .ticker-track-wide{
+      display:flex;align-items:center;width:max-content;
+      animation:ticker-scroll-wide 7s linear infinite;
+      will-change:transform;
+      padding:9px 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track-wide{animation:none;}
+  }
+  @keyframes ticker-scroll-wide{
+    to{transform:translateX(-16.6667%);}
   }
 </style>
 </head>
@@ -453,6 +474,26 @@
 
 <div class="ticker">
   <div class="ticker-track">
+    <span class="ticker-item">Quality Drawers</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Easy To Assemble</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Stock Selling Fast</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Quality Drawers</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Easy To Assemble</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Stock Selling Fast</span><span class="ticker-sep">•</span>
+  </div>
+  <div class="ticker-track-wide" aria-hidden="true">
+    <span class="ticker-item">Quality Drawers</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Easy To Assemble</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Stock Selling Fast</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Quality Drawers</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Easy To Assemble</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Stock Selling Fast</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Quality Drawers</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Easy To Assemble</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Stock Selling Fast</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Quality Drawers</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Easy To Assemble</span><span class="ticker-sep">•</span>
+    <span class="ticker-item">Stock Selling Fast</span><span class="ticker-sep">•</span>
     <span class="ticker-item">Quality Drawers</span><span class="ticker-sep">•</span>
     <span class="ticker-item">Easy To Assemble</span><span class="ticker-sep">•</span>
     <span class="ticker-item">Stock Selling Fast</span><span class="ticker-sep">•</span>
