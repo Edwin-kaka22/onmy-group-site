@@ -213,6 +213,14 @@
   .carousel-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:3;}
   .carousel-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.7);border:1px solid rgba(0,0,0,0.15);cursor:pointer;padding:0;}
   .carousel-dot.active{background:rgba(120,120,120,0.9);border-color:rgba(0,0,0,0.25);}
+  /* Dots exist to show carousel position while swiping - on a mouse-driven,
+     non-touch device there's no swipe gesture to track, so they're just
+     inert clutter. Targeting hover+fine-pointer (not a width breakpoint)
+     since that's the actual reason they stop being useful, not screen size -
+     a touch laptop/tablet at a "desktop" width still swipes fine. */
+  @media (hover: hover) and (pointer: fine){
+    .carousel-dots{display:none;}
+  }
   .card-body{padding:14px 14px 16px;display:flex;flex-direction:column;gap:10px;flex:1;}
   .title-row{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;}
   .card-name{font-size:20px;font-weight:700;line-height:1.15;text-transform:uppercase;letter-spacing:0.02em;}
@@ -458,7 +466,7 @@
        its own row regardless of screen width - not something the ticker/
        wrap change touched. Fixing it here: 4-across, with its own max-width
        widened (from 760px) so four columns of this text has room to breathe. */
-    .info-list{grid-template-columns:repeat(4,1fr);max-width:1100px;}
+    .info-list{grid-template-columns:repeat(4,1fr);max-width:1350px;}
 
     /* Mobile's 2-set ticker track (translateX -50%) is intentionally left
        untouched below this breakpoint. On very wide desktop viewports two
