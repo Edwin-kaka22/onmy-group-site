@@ -1512,7 +1512,12 @@
 
   /* ---------------- Render product grid ---------------- */
   var grid = document.getElementById("productGrid");
-  var gridHtml = PRODUCTS.map(function(p, idx){
+  /* Display order: in-stock first, sold-out last. Built from the soldOut
+     flag at render time, so marking a product sold out (or back in stock)
+     moves it automatically. Each group keeps its original PRODUCTS order. */
+  var DISPLAY_ORDER = PRODUCTS.filter(function(p){ return !p.soldOut; })
+    .concat(PRODUCTS.filter(function(p){ return p.soldOut; }));
+  var gridHtml = DISPLAY_ORDER.map(function(p, idx){
     var soldClass = p.soldOut ? " soldout" : "";
     var note = p.note ? '<div class="card-note">' + p.note + '</div>' : "";
     var disabledAttr = p.soldOut ? "disabled" : "";
